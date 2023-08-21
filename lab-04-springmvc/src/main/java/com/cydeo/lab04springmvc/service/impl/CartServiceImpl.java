@@ -57,14 +57,18 @@ public class CartServiceImpl implements CartService {
 
 
         cart1.setCartItemList(cartItemList);
-        BigDecimal cart1TotalAmount = BigDecimal.ZERO;
-        BigDecimal cart2TotalAmount = BigDecimal.ZERO;
+//        BigDecimal cart1TotalAmount = BigDecimal.ZERO;
+//      BigDecimal cart2TotalAmount = BigDecimal.ZERO;
 
         // todo change to stream
 
-        for (CartItem cartItem : cartItemList){
-            cart1TotalAmount = cart1TotalAmount.add(cartItem.getProduct().getPrice().multiply(BigDecimal.valueOf(cartItem.getQuantity())));
-        }
+        BigDecimal cart1TotalAmount = cartItemList.stream()
+                .map(cartItem -> cartItem.getProduct().getPrice().multiply(BigDecimal.valueOf(cartItem.getQuantity())))
+                .reduce(BigDecimal.ZERO,BigDecimal::add);
+
+//        for (CartItem cartItem : cartItemList){
+//            cart1TotalAmount = cart1TotalAmount.add(cartItem.getProduct().getPrice().multiply(BigDecimal.valueOf(cartItem.getQuantity())));
+//        }
 
         CART_LIST.add(cart1);
         cart1.setCartTotalAmount(cart1TotalAmount);
@@ -73,9 +77,15 @@ public class CartServiceImpl implements CartService {
         cart2.setCartItemList(cartItemList1);
 
         // todo change to stream
-        for (CartItem cartItem : cartItemList1){
-            cart2TotalAmount = cart1TotalAmount.add(cartItem.getProduct().getPrice().multiply(BigDecimal.valueOf(cartItem.getQuantity())));
-        }
+
+        BigDecimal  cart2TotalAmount = cartItemList1.stream()
+                .map(cartItem -> cartItem.getProduct().getPrice().multiply(BigDecimal.valueOf(cartItem.getQuantity())))
+                        .reduce(BigDecimal.ZERO,BigDecimal::add);
+
+
+//        for (CartItem cartItem : cartItemList1){
+//            cart2TotalAmount = cart1TotalAmount.add(cartItem.getProduct().getPrice().multiply(BigDecimal.valueOf(cartItem.getQuantity())));
+//        }
 
         cart2.setCartTotalAmount(cart2TotalAmount);
         CART_LIST.add(cart2);
