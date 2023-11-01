@@ -1,5 +1,6 @@
 package com.cydeo.lab08rest.controller;
 
+import com.cydeo.lab08rest.dto.ProductDTO;
 import com.cydeo.lab08rest.model.ResponseWrapper;
 import com.cydeo.lab08rest.service.ProductService;
 import org.springframework.http.HttpStatus;
@@ -21,15 +22,27 @@ public class ProductController {
     public ResponseEntity<ResponseWrapper> getProductList(){
 
         return ResponseEntity
-                .status(HttpStatus.ACCEPTED)
-                .body(new ResponseWrapper("string",productService.getAllProducts(),HttpStatus.ACCEPTED));
+                .ok(
+               new ResponseWrapper("products are successfully retrieved",productService.getAllProducts(),HttpStatus.ACCEPTED));
     }
 
-//    @PostMapping
-//    public ResponseEntity<ResponseWrapper> createProduct(@RequestBody ProductDTO product){
-//
-//
-//    }
+    @PutMapping
+    public ResponseEntity<ResponseWrapper> updateProduct(@RequestBody ProductDTO product){
+
+        return ResponseEntity
+                .ok(new ResponseWrapper("Product is updated",productService.updateProduct(product),HttpStatus.CREATED));
+
+    }
+
+    @PostMapping
+    public ResponseEntity<ResponseWrapper> createProduct(@RequestBody ProductDTO product){
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(new ResponseWrapper("Product created!",productService.createProduct(product),HttpStatus.OK));
+
+
+    }
 
 
 }

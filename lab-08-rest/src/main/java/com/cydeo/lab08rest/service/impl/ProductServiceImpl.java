@@ -28,4 +28,19 @@ public class ProductServiceImpl implements ProductService {
                 .map(product -> mapperUtil.convert(product,new ProductDTO()))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public ProductDTO createProduct(ProductDTO product) {
+         productRepository.save(mapperUtil.convert(product,new Product()));
+        return product;
+    }
+
+    @Override
+    public ProductDTO updateProduct(ProductDTO product) {
+       Product foundProduct = productRepository.findById(product.getId()).orElseThrow();
+       Product convertProduct = mapperUtil.convert(product,new Product());
+       convertProduct.setId(foundProduct.getId());
+       productRepository.save(convertProduct);
+       return product;
+    }
 }
