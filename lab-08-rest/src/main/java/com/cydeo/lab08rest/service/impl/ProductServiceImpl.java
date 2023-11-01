@@ -7,6 +7,7 @@ import com.cydeo.lab08rest.repository.ProductRepository;
 import com.cydeo.lab08rest.service.ProductService;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,22 +26,60 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductDTO> getAllProducts() {
         return productRepository.findAll().stream()
-                .map(product -> mapperUtil.convert(product,new ProductDTO()))
+                .map(product -> mapperUtil.convert(product, new ProductDTO()))
                 .collect(Collectors.toList());
     }
 
     @Override
     public ProductDTO createProduct(ProductDTO product) {
-         productRepository.save(mapperUtil.convert(product,new Product()));
+        productRepository.save(mapperUtil.convert(product, new Product()));
         return product;
     }
 
     @Override
     public ProductDTO updateProduct(ProductDTO product) {
-       Product foundProduct = productRepository.findById(product.getId()).orElseThrow();
-       Product convertProduct = mapperUtil.convert(product,new Product());
-       convertProduct.setId(foundProduct.getId());
-       productRepository.save(convertProduct);
-       return product;
+        Product foundProduct = productRepository.findById(product.getId()).orElseThrow();
+        Product convertProduct = mapperUtil.convert(product, new Product());
+        convertProduct.setId(foundProduct.getId());
+        productRepository.save(convertProduct);
+        return product;
     }
+
+    @Override
+    public ProductDTO findByProductName(String name) {
+        Product product = productRepository.findFirstByName(name);
+        return mapperUtil.convert(product, new ProductDTO());
+
+    }
+
+    @Override
+    public List<ProductDTO> findTop3() {
+        return productRepository.findTop3ByOrderByPriceDesc().stream()
+                .map(product -> mapperUtil.convert(product, new ProductDTO()))
+                .collect(Collectors.toList());
+
+    }
+
+    @Override
+    public Integer countProductByPriceGreaterThan(BigDecimal price) {
+        return productRepository.countProductByPriceGreaterThan(price);
+
+    }
+
+    @Override
+    public List<ProductDTO> listProductByPriceAndQuantity(BigDecimal price, Integer quantity) {
+        return productRepository.retrieveProductListGreaterThanPriceAndLowerThanRemainingQuantity(price, quantity)
+                .stream().map(
+                        product -> mapperUtil.convert(product, new ProductDTO()))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ProductDTO> getProductsByCategory(Long id) {
+        return productRepository.retrieveProductListByCategory(id)
+                .stream().map(product -> mapperUtil.convert(product,new ProductDTO()))
+                .collect(Collectors.toList());
+    }
+
+
 }

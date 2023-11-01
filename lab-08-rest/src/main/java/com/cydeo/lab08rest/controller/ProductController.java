@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+
 @RestController
 @RequestMapping("/api/v1/product")
 public class ProductController {
@@ -31,7 +33,6 @@ public class ProductController {
 
         return ResponseEntity
                 .ok(new ResponseWrapper("Product is updated",productService.updateProduct(product),HttpStatus.CREATED));
-
     }
 
     @PostMapping
@@ -40,9 +41,45 @@ public class ProductController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(new ResponseWrapper("Product created!",productService.createProduct(product),HttpStatus.OK));
+    }
 
+    @GetMapping("/{name}")
+    public ResponseEntity<ResponseWrapper> getProductListByName(@PathVariable("name") String name){
+        return ResponseEntity
+                .ok(new ResponseWrapper("Project is successfully retrieved",productService.findByProductName(name),HttpStatus.OK));
+    }
+
+    @GetMapping("/top3")
+    public ResponseEntity<ResponseWrapper> getTop3ProductList(){
+        return ResponseEntity
+                .ok(new ResponseWrapper("Products are successfully retrieved",productService.findTop3(),HttpStatus.ACCEPTED));
+    }
+
+    @GetMapping("/price/{price}")
+    public ResponseEntity<ResponseWrapper> getProductListByPrice(@PathVariable("price")BigDecimal price){
+        return ResponseEntity
+                .ok(new ResponseWrapper("Products are successfully retrieved",productService.countProductByPriceGreaterThan(price),HttpStatus.ACCEPTED));
+    }
+
+
+    @GetMapping("/price/{price}/quantity/{quantity}")
+    public ResponseEntity<ResponseWrapper> getProductListByPriceAndQuantity(@PathVariable("price") BigDecimal price,
+                                                                            @PathVariable("quantity") Integer quantity){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(new ResponseWrapper("Products are successfully retrieved",
+                        productService.listProductByPriceAndQuantity(price,quantity),
+                        HttpStatus.OK));
 
     }
+
+
+    @GetMapping("/category/{id}")
+    public ResponseEntity<ResponseWrapper> getProductListByCategory(@PathVariable("id") Long id){
+        return ResponseEntity.ok(new ResponseWrapper("Products are successfully retrieved",
+                productService.getProductsByCategory(id),HttpStatus.OK));
+    }
+
 
 
 }
