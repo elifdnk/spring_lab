@@ -1,6 +1,7 @@
 package com.cydeo.lab08rest.service;
 
 import com.cydeo.lab08rest.dto.ProductDTO;
+import com.cydeo.lab08rest.dto.ProductRequest;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -18,7 +19,7 @@ public interface ProductService {
    List<ProductDTO> findTop3();
    Integer countProductByPriceGreaterThan(BigDecimal price);
 
-   List<ProductDTO> listProductByPriceAndQuantity(BigDecimal price,Integer quantity);
+   List<ProductDTO> readAllByCategoriesAndPrice(ProductRequest productRequest);
 
    List<ProductDTO> getProductsByCategory(Long id);
 

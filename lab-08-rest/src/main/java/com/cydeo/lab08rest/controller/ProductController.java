@@ -1,6 +1,7 @@
 package com.cydeo.lab08rest.controller;
 
 import com.cydeo.lab08rest.dto.ProductDTO;
+import com.cydeo.lab08rest.dto.ProductRequest;
 import com.cydeo.lab08rest.model.ResponseWrapper;
 import com.cydeo.lab08rest.service.ProductService;
 import org.springframework.http.HttpStatus;
@@ -62,17 +63,15 @@ public class ProductController {
     }
 
 
-    @GetMapping("/price/{price}/quantity/{quantity}")
-    public ResponseEntity<ResponseWrapper> getProductListByPriceAndQuantity(@PathVariable("price") BigDecimal price,
-                                                                            @PathVariable("quantity") Integer quantity){
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(new ResponseWrapper("Products are successfully retrieved",
-                        productService.listProductByPriceAndQuantity(price,quantity),
-                        HttpStatus.OK));
-
+    @PostMapping("/categoryandprice")
+    public ResponseEntity<ResponseWrapper> getAllByCategoriesAndPrice(@RequestBody ProductRequest productRequest) {
+        return ResponseEntity.ok(ResponseWrapper.builder()
+                .code(200)
+                .success(true)
+                .message("Products are retrieved successfully.")
+                .data(productService.readAllByCategoriesAndPrice(productRequest))
+                .build());
     }
-
 
     @GetMapping("/category/{id}")
     public ResponseEntity<ResponseWrapper> getProductListByCategory(@PathVariable("id") Long id){

@@ -1,6 +1,7 @@
 package com.cydeo.lab08rest.service.impl;
 
 import com.cydeo.lab08rest.dto.ProductDTO;
+import com.cydeo.lab08rest.dto.ProductRequest;
 import com.cydeo.lab08rest.entity.Product;
 import com.cydeo.lab08rest.mapper.MapperUtil;
 import com.cydeo.lab08rest.repository.ProductRepository;
@@ -67,10 +68,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductDTO> listProductByPriceAndQuantity(BigDecimal price, Integer quantity) {
-        return productRepository.retrieveProductListGreaterThanPriceAndLowerThanRemainingQuantity(price, quantity)
-                .stream().map(
-                        product -> mapperUtil.convert(product, new ProductDTO()))
+    public List<ProductDTO> readAllByCategoriesAndPrice(ProductRequest productRequest) {
+        return productRepository.retrieveProductListByCategoryAndPrice(productRequest.getCategoryList(), productRequest.getPrice())
+                .stream()
+                .map(product -> mapperUtil.convert(product, new ProductDTO()))
                 .collect(Collectors.toList());
     }
 
