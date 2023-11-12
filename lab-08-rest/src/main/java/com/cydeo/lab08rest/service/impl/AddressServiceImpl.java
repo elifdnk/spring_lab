@@ -3,6 +3,7 @@ package com.cydeo.lab08rest.service.impl;
 import com.cydeo.lab08rest.dto.AddressDTO;
 import com.cydeo.lab08rest.entity.Address;
 import com.cydeo.lab08rest.entity.Customer;
+import com.cydeo.lab08rest.exception.AddressNotFoundException;
 import com.cydeo.lab08rest.mapper.MapperUtil;
 import com.cydeo.lab08rest.repository.AddressRepository;
 import com.cydeo.lab08rest.repository.CustomerRepository;
@@ -33,14 +34,20 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public AddressDTO createAddress(AddressDTO addressDTO) {
-         addressRepository.save(mapperUtil.convert(addressDTO,new Address()));
-         return addressDTO;
+
+        Address  addressToSave = mapperUtil.convert(addressDTO,new Address());
+         Address savedAddress = addressRepository.save(addressToSave);
+         return mapperUtil.convert(savedAddress,new AddressDTO());
     }
 
     @Override
     public AddressDTO updateAddress(AddressDTO addressDTO) {
-        addressRepository.save(mapperUtil.convert(addressDTO,new Address()));
-        return addressDTO;
+    Address foundAddress = addressRepository.findById(addressDTO.getId())
+            .orElseThrow(()->new AddressNotFoundException("Address not found"));
+    Address addressToUpdate = mapperUtil.convert(addressDTO,new Address());
+    addressToUpdate.setId(foundAddress.getId());
+    Address updatedAddress = addressRepository.save(addressToUpdate);
+return mapperUtil.convert(updatedAddress,new AddressDTO());
     }
 
     @Override
