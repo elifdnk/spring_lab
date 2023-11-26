@@ -9,7 +9,7 @@ public interface OrderService {
 
     List<OrderDTO> getAllOrders();
 
-    OrderDTO updateOrder(OrderDTO order);
+    OrderDTO update(OrderDTO orderDTO);
     OrderDTO createOrder(OrderDTO order);
     List<OrderDTO> getOrderListByPaymentMethod(PaymentMethod paymentMethod);
 

@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1/order")
 public class OrderController {
@@ -26,11 +28,15 @@ public class OrderController {
     }
 
     @PutMapping
-    public ResponseEntity<ResponseWrapper> updateOrder(@RequestBody OrderDTO order){
-
-        return ResponseEntity
-                .ok(new ResponseWrapper("Product is updated",orderService.updateOrder(order),HttpStatus.CREATED));
+    public ResponseEntity<ResponseWrapper> update(@RequestBody OrderDTO orderDTO) {
+        return ResponseEntity.ok(ResponseWrapper.builder()
+                .code(200)
+                .success(true)
+                .message("Order is updated successfully.")
+                .data(orderService.update(orderDTO))
+                .build());
     }
+
     @PostMapping
     public ResponseEntity<ResponseWrapper> createOrder(@RequestBody OrderDTO order){
         return ResponseEntity
