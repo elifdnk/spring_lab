@@ -1,10 +1,10 @@
 package com.cydeo.service.impl;
 
-import com.cydeo.lab08rest.dto.ProductDTO;
-import com.cydeo.lab08rest.entity.Product;
-import com.cydeo.lab08rest.mapper.MapperUtil;
-import com.cydeo.lab08rest.repository.ProductRepository;
-import com.cydeo.lab08rest.service.ProductService;
+import com.cydeo.dto.ProductDTO;
+import com.cydeo.entity.Product;
+import com.cydeo.mapper.MapperUtil;
+import com.cydeo.repository.ProductRepository;
+import com.cydeo.service.ProductService;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;

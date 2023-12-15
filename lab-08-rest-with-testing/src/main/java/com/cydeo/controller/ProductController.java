@@ -1,9 +1,9 @@
 package com.cydeo.controller;
 
-import com.cydeo.lab08rest.dto.ProductDTO;
-import com.cydeo.lab08rest.dto.ProductRequest;
-import com.cydeo.lab08rest.model.ResponseWrapper;
-import com.cydeo.lab08rest.service.ProductService;
+import com.cydeo.dto.ProductDTO;
+import com.cydeo.dto.ProductRequest;
+import com.cydeo.model.ResponseWrapper;
+import com.cydeo.service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

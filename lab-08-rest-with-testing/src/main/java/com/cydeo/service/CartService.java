@@ -1,9 +1,9 @@
 package com.cydeo.service;
 
-import com.cydeo.lab08rest.dto.CartDTO;
-import com.cydeo.lab08rest.entity.Cart;
-import com.cydeo.lab08rest.entity.CartItem;
-import com.cydeo.lab08rest.entity.Customer;
+import com.cydeo.dto.CartDTO;
+import com.cydeo.entity.Cart;
+import com.cydeo.entity.CartItem;
+import com.cydeo.entity.Customer;
 
 import java.math.BigDecimal;
 import java.util.List;

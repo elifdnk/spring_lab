@@ -1,6 +1,6 @@
 package com.cydeo.service;
 
-import com.cydeo.lab08rest.dto.ProductDTO;
+import com.cydeo.dto.ProductDTO;
 
 import java.math.BigDecimal;
 import java.util.List;

@@ -1,8 +1,8 @@
 package com.cydeo.service;
 
-import com.cydeo.lab08rest.dto.OrderDTO;
-import com.cydeo.lab08rest.dto.UpdateOrderDTO;
-import com.cydeo.lab08rest.enums.PaymentMethod;
+import com.cydeo.dto.OrderDTO;
+import com.cydeo.dto.UpdateOrderDTO;
+import com.cydeo.enums.PaymentMethod;
 
 import java.math.BigDecimal;
 import java.util.List;

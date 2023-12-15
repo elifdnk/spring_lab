@@ -1,7 +1,7 @@
 package com.cydeo.service.impl;
 
-import com.cydeo.lab08rest.repository.PaymentRepository;
-import com.cydeo.lab08rest.service.PaymentService;
+import com.cydeo.repository.PaymentRepository;
+import com.cydeo.service.PaymentService;
 import org.springframework.stereotype.Service;
 
 @Service

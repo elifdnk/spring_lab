@@ -1,7 +1,7 @@
 package com.cydeo.repository;
 
-import com.cydeo.lab08rest.entity.Order;
-import com.cydeo.lab08rest.enums.PaymentMethod;
+import com.cydeo.entity.Order;
+import com.cydeo.enums.PaymentMethod;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

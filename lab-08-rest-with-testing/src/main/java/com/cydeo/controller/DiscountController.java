@@ -1,8 +1,8 @@
 package com.cydeo.controller;
 
-import com.cydeo.lab08rest.dto.DiscountDTO;
-import com.cydeo.lab08rest.model.ResponseWrapper;
-import com.cydeo.lab08rest.service.DiscountService;
+import com.cydeo.dto.DiscountDTO;
+import com.cydeo.model.ResponseWrapper;
+import com.cydeo.service.DiscountService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

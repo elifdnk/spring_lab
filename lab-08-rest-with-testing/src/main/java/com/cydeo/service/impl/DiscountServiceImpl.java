@@ -1,10 +1,10 @@
 package com.cydeo.service.impl;
 
-import com.cydeo.lab08rest.dto.DiscountDTO;
-import com.cydeo.lab08rest.entity.Discount;
-import com.cydeo.lab08rest.mapper.MapperUtil;
-import com.cydeo.lab08rest.repository.DiscountRepository;
-import com.cydeo.lab08rest.service.DiscountService;
+import com.cydeo.dto.DiscountDTO;
+import com.cydeo.entity.Discount;
+import com.cydeo.mapper.MapperUtil;
+import com.cydeo.repository.DiscountRepository;
+import com.cydeo.service.DiscountService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

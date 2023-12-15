@@ -1,6 +1,6 @@
 package com.cydeo.service;
 
-import com.cydeo.lab08rest.dto.CustomerDTO;
+import com.cydeo.dto.CustomerDTO;
 
 import java.util.List;
 

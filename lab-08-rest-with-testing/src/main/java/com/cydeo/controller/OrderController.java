@@ -1,10 +1,10 @@
 package com.cydeo.controller;
 
-import com.cydeo.lab08rest.dto.OrderDTO;
-import com.cydeo.lab08rest.dto.UpdateOrderDTO;
-import com.cydeo.lab08rest.enums.PaymentMethod;
-import com.cydeo.lab08rest.model.ResponseWrapper;
-import com.cydeo.lab08rest.service.OrderService;
+import com.cydeo.dto.OrderDTO;
+import com.cydeo.dto.UpdateOrderDTO;
+import com.cydeo.enums.PaymentMethod;
+import com.cydeo.model.ResponseWrapper;
+import com.cydeo.service.OrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,10 +1,15 @@
 package com.cydeo.service.impl;
 
-import com.cydeo.lab08rest.dto.CartDTO;
-import com.cydeo.lab08rest.enums.CartState;
-import com.cydeo.lab08rest.enums.DiscountType;
-import com.cydeo.lab08rest.mapper.MapperUtil;
-import com.cydeo.lab08rest.service.CartService;
+import com.cydeo.dto.CartDTO;
+import com.cydeo.entity.*;
+import com.cydeo.enums.CartState;
+import com.cydeo.enums.DiscountType;
+import com.cydeo.mapper.MapperUtil;
+import com.cydeo.repository.CartItemRepository;
+import com.cydeo.repository.CartRepository;
+import com.cydeo.repository.DiscountRepository;
+import com.cydeo.repository.ProductRepository;
+import com.cydeo.service.CartService;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;

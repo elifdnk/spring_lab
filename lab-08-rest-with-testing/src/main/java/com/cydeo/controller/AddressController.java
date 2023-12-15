@@ -1,8 +1,11 @@
 package com.cydeo.controller;
 
-import com.cydeo.lab08rest.dto.AddressDTO;
-import com.cydeo.lab08rest.model.ResponseWrapper;
-import com.cydeo.lab08rest.service.AddressService;
+import com.cydeo.dto.AddressDTO;
+import com.cydeo.dto.AddressDTO;
+import com.cydeo.model.ResponseWrapper;
+import com.cydeo.service.AddressService;
+import com.cydeo.model.ResponseWrapper;
+import com.cydeo.service.AddressService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

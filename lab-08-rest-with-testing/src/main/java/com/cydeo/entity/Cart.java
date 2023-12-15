@@ -1,6 +1,6 @@
 package com.cydeo.entity;
 
-import com.cydeo.lab08rest.enums.CartState;
+import com.cydeo.enums.CartState;
 import lombok.Getter;
 import lombok.Setter;
 

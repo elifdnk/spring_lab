@@ -1,6 +1,6 @@
 package com.cydeo.repository;
 
-import com.cydeo.lab08rest.entity.Payment;
+import com.cydeo.entity.Payment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
