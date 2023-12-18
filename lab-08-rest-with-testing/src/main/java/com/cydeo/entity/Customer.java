@@ -3,6 +3,7 @@ package com.cydeo.entity;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 @Setter
 @Entity
 public class Customer extends BaseEntity {
+
     private String firstName;
     private String lastName;
     private String userName;
